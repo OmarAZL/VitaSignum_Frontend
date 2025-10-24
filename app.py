@@ -24,8 +24,9 @@ while True:
                 st.write(f"Temperatura 2: :blue[{temp2}]")
                 st.write(f"Tiempo encendido: :blue[{round(hours, 3)}] horas")
         else:
-            st.error(f"Error al obtener datos: Código {response.status_code}")
-            st.text(f"Reintentando en {REFRESH_INTERVAL_SECONDS} segundos")
+            with placeholder.container():
+                st.error(f"Error al obtener datos: Código {response.status_code}")
+                st.text(f"Reintentando en {REFRESH_INTERVAL_SECONDS} segundos")
     except req.exceptions.RequestException as e:
         with placeholder.container():
             st.error(f"Error de conexión: {e}")
